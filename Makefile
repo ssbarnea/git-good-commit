@@ -19,7 +19,7 @@ repair:
 	for GIT_ROOT in $$(find ~/ -name .git -type d -prune); do \
 	[ -d "$${GIT_ROOT}/hooks/commit-msg.d" ] || mkdir -p "$${GIT_ROOT}/hooks/commit-msg.d"; \
 	ln -s -f $(CURDIR)/hook.sh "$${GIT_ROOT}/hooks/commit-msg.d/git-good-commit"; \
-	[ ! -f "$${GIT_ROOT}/hooks/commit-msg" ] && ln -s -f $(CURDIR)/hook.sh "$${GIT_ROOT}/hooks/commit-msg"; \
+	[ -f "$${GIT_ROOT}/hooks/commit-msg" ] || ln -s -f $(CURDIR)/hook.sh "$${GIT_ROOT}/hooks/commit-msg"; \
 	done;
 
 .PHONY: setup test
